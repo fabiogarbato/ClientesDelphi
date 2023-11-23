@@ -22,6 +22,7 @@ type
     function Apagar(Id: Integer): Boolean;
     function Selecionar(Id: Integer): Boolean;
     function Logar(usuario, senha: String): Boolean;
+    function ValidarSenha(const Senha: string): Boolean;
 
     property Nome: String read FNome write FNome;
     property Senha: String read FSenha write FSenha;
@@ -134,6 +135,29 @@ begin
       FreeAndNil(qryInserirUsuario);
   end;
 end;
+
+function TCadastroUsuario.ValidarSenha(const Senha: string): Boolean;
+var
+  TemMaiuscula, TemMinuscula, TemEspecial: Boolean;
+  i: Integer;
+begin
+  TemMaiuscula := False;
+  TemMinuscula := False;
+  TemEspecial := False;
+
+  for i := 1 to Length(Senha) do
+  begin
+    if CharInSet(Senha[i], ['A'..'Z']) then
+      TemMaiuscula := True
+    else if CharInSet(Senha[i], ['a'..'z']) then
+      TemMinuscula := True
+    else if CharInSet(Senha[i], ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', '{', '}', '[', ']', ':', ';', '"', '''', '<', '>', ',', '.', '/', '?', '|', '\']) then
+      TemEspecial := True;
+  end;
+
+  Result := TemMaiuscula and TemMinuscula and TemEspecial;
+end;
+
 
 function TCadastroUsuario.Logar(usuario, senha: String): Boolean;
 begin

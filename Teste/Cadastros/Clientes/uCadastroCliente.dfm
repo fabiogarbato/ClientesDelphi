@@ -2,6 +2,7 @@ inherited frmCadastroCliente: TfrmCadastroCliente
   Caption = 'Cadastro de Clientes'
   ClientHeight = 372
   ClientWidth = 759
+  Color = 16776176
   ExplicitWidth = 771
   ExplicitHeight = 410
   TextHeight = 13
@@ -42,21 +43,25 @@ inherited frmCadastroCliente: TfrmCadastroCliente
           item
             Expanded = False
             FieldName = 'Nome'
+            Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Endereco'
+            Width = 300
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Cidade'
+            Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'Bairro'
+            Width = 100
             Visible = True
           end
           item
@@ -72,6 +77,7 @@ inherited frmCadastroCliente: TfrmCadastroCliente
           item
             Expanded = False
             FieldName = 'Email'
+            Width = 150
             Visible = True
           end
           item
@@ -226,15 +232,15 @@ inherited frmCadastroCliente: TfrmCadastroCliente
     end
   end
   inherited dtsLista: TDataSource
-    Left = 644
-    Top = 32
+    Left = 676
+    Top = 40
   end
   inherited qryLista: TADOQuery
     CursorType = ctStatic
     SQL.Strings = (
       'SELECT * FROM vCliente')
-    Left = 596
-    Top = 160
+    Left = 668
+    Top = 112
     object qryListaId_Cliente: TAutoIncField
       FieldName = 'Id_Cliente'
       ReadOnly = True

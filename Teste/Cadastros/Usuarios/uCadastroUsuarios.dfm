@@ -2,6 +2,7 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
   Caption = 'Cadastro de Usu'#225'rios'
   ClientHeight = 494
   ClientWidth = 824
+  Color = 16776176
   ExplicitWidth = 836
   ExplicitHeight = 532
   TextHeight = 13
@@ -17,8 +18,8 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
       Hints.Strings = ()
     end
     inherited brnFechar: TBitBtn
-      Left = 710
-      ExplicitLeft = 706
+      Left = 706
+      ExplicitLeft = 702
     end
   end
   inherited pgcPrincipal: TPageControl
