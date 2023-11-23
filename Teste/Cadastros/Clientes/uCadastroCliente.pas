@@ -95,12 +95,23 @@ procedure TfrmCadastroCliente.edtCepExit(Sender: TObject);
 begin
   inherited;
   var buscaCep := TBuscaCEP.Create;
-  var dadosCep := buscaCep.EncontrarCep(edtCep.Text);
+  try
+    var dadosCep := buscaCep.EncontrarCep(edtCep.Text);
 
-  edtEndereco.Text := dadosCep.logradouro;
-  edtCidade.Text := dadosCep.localidade;
-  edtBairro.Text :=dadosCep.bairro;
-  edtEstado.Text := dadosCep.uf;
+    if (dadosCep.logradouro <> '') and (dadosCep.localidade <> '') and (dadosCep.uf <> '') then
+    begin
+      edtEndereco.Text := dadosCep.logradouro;
+      edtCidade.Text := dadosCep.localidade;
+      edtBairro.Text := dadosCep.bairro;
+      edtEstado.Text := dadosCep.uf;
+    end
+    else
+    begin
+      ShowMessage('CEP não encontrado. Por favor, verifique o CEP digitado.');
+    end;
+  finally
+    buscaCep.Free;
+  end;
 end;
 
 procedure TfrmCadastroCliente.FormClose(Sender: TObject;

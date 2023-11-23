@@ -81,10 +81,7 @@ begin
     Result := True;
     qryAtualizarCliente.Connection := FConexaoDB;
     qryAtualizarCliente.SQL.Clear;
-    qryAtualizarCliente.SQL.Add('UPDATE Cliente SET Nome = :Nome, Endereco = :Endereco, Cidade = :Cidade,');
-    qryAtualizarCliente.SQL.Add('Bairro = :Bairro, Estado = :Estado, Cep = :Cep, Telefone = :Telefone, ');
-    qryAtualizarCliente.SQL.Add('Email = :Email, Data_Nascimento = :Data_Nascimento');
-    qryAtualizarCliente.SQL.Add('WHERE Id_Cliente = :Id_Cliente');
+    qryAtualizarCliente.SQL.Add('EXEC dbo.ClienteU :Id_Cliente, :Nome, :Endereco, :Cidade, :Bairro, :Estado, :Cep, :Telefone, :Email, :Data_Nascimento');
     qryAtualizarCliente.Parameters.ParamByName('Id_Cliente').Value := FClienteId;
     qryAtualizarCliente.Parameters.ParamByName('Nome').Value := FNome;
     qryAtualizarCliente.Parameters.ParamByName('Endereco').Value := FEndereco;
@@ -116,8 +113,7 @@ begin
     Result := True;
     qryInserirCliente.Connection := FConexaoDB;
     qryInserirCliente.SQL.Clear;
-    qryInserirCliente.SQL.Add('INSERT INTO Cliente(Nome, Endereco, Cidade, Bairro, Estado, Cep, Telefone, Email, Data_Nascimento)');
-    qryInserirCliente.SQL.Add('VALUES(:Nome, :Endereco, :Cidade, :Bairro, :Estado, :Cep, :Telefone, :Email, :Data_Nascimento)');
+    qryInserirCliente.SQL.Add('EXEC dbo.ClienteI :Nome, :Endereco, :Cidade, :Bairro, :Estado, :Cep, :Telefone, :Email, :Data_Nascimento');
     qryInserirCliente.Parameters.ParamByName('Nome').Value := FNome;
     qryInserirCliente.Parameters.ParamByName('Endereco').Value := FEndereco;
     qryInserirCliente.Parameters.ParamByName('Cidade').Value := FCidade;
