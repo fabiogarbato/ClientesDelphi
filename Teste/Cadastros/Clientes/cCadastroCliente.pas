@@ -144,7 +144,7 @@ begin
     Result := True;
     tblCliente.Connection := FConexaoDB;
     tblCliente.SQL.Clear;
-    tblCliente.SQL.Add('SELECT * FROM Cliente WHERE Id_Cliente = :Id_Cliente');
+    tblCliente.SQL.Add('SELECT * FROM vCliente WHERE Id_Cliente = :Id_Cliente');
     tblCliente.Parameters.ParamByName('Id_Cliente').Value := Id;
 
     try
