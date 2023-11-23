@@ -10,12 +10,15 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
     Width = 824
     ExplicitTop = 456
     ExplicitWidth = 820
+    DesignSize = (
+      824
+      37)
     inherited btnNavegator: TDBNavigator
       Hints.Strings = ()
     end
     inherited brnFechar: TBitBtn
-      Left = 714
-      ExplicitLeft = 710
+      Left = 710
+      ExplicitLeft = 706
     end
   end
   inherited pgcPrincipal: TPageControl

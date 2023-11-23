@@ -22,18 +22,18 @@ type
     edtTelefone: TMaskEdit;
     edtDataNascimento: TDateEdit;
     lblCEP: TLabel;
-    qryListaCLIENTE_ID: TIntegerField;
-    qryListaNOME: TWideStringField;
-    qryListaENDERECO: TWideStringField;
-    qryListaCIDADE: TWideStringField;
-    qryListaBAIRRO: TWideStringField;
-    qryListaESTADO: TWideStringField;
-    qryListaCEP: TWideStringField;
-    qryListaTELEFONE: TWideStringField;
-    qryListaEMAIL: TWideStringField;
-    qryListaDATA_NASCIMENTO: TDateTimeField;
     lblTelefone: TLabel;
     lblDataNascimento: TLabel;
+    qryListaId_Cliente: TAutoIncField;
+    qryListaNome: TStringField;
+    qryListaEndereco: TStringField;
+    qryListaCidade: TStringField;
+    qryListaBairro: TStringField;
+    qryListaEstado: TStringField;
+    qryListaTelefone: TStringField;
+    qryListaEmail: TStringField;
+    qryListaData_Nascimento: TDateTimeField;
+    qryListaCep: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAlterarClick(Sender: TObject);
@@ -63,7 +63,7 @@ uses
 
 procedure TfrmCadastroCliente.btnAlterarClick(Sender: TObject);
 begin
-  if oCliente.Selecionar(qryLista.FieldByName('CLIENTE_ID').AsInteger) then
+  if oCliente.Selecionar(qryLista.FieldByName('Id_Cliente').AsInteger) then
   begin
     edtCodigo.Text := oCliente.ClienteId.ToString;
     edtNome.Text := oCliente.Nome;
@@ -123,7 +123,7 @@ begin
   if MessageDlg('Deseja mesmo apagar o registro atual?', mtConfirmation, [mbYes, mbNo],0) = mrNo then
     Abort;
 
-  Result := oCliente.Apagar(qryLista.FieldByName('CLIENTE_ID').AsInteger);
+  Result := oCliente.Apagar(qryLista.FieldByName('Id_Cliente').AsInteger);
 end;
 
 function TfrmCadastroCliente.Salvar(estadoCadastro: TEstadoCadastro): Boolean;

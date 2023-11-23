@@ -14,8 +14,8 @@ inherited frmCadastroCliente: TfrmCadastroCliente
       Hints.Strings = ()
     end
     inherited brnFechar: TBitBtn
-      Left = 657
-      ExplicitLeft = 653
+      Left = 649
+      ExplicitLeft = 645
     end
   end
   inherited pgcPrincipal: TPageControl
@@ -36,61 +36,47 @@ inherited frmCadastroCliente: TfrmCadastroCliente
         Columns = <
           item
             Expanded = False
-            FieldName = 'CLIENTE_ID'
+            FieldName = 'Id_Cliente'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'NOME'
-            Width = 250
+            FieldName = 'Nome'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CEP'
-            Width = 70
+            FieldName = 'Endereco'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CIDADE'
-            Width = 300
+            FieldName = 'Cidade'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ESTADO'
-            Width = 50
+            FieldName = 'Bairro'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ENDERECO'
-            Width = 300
+            FieldName = 'Estado'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'BAIRRO'
-            Width = 250
+            FieldName = 'Telefone'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'TELEFONE'
-            Width = 90
+            FieldName = 'Email'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'EMAIL'
-            Width = 300
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'DATA_NASCIMENTO'
-            Width = 115
+            FieldName = 'Data_Nascimento'
             Visible = True
           end>
       end
@@ -240,63 +226,53 @@ inherited frmCadastroCliente: TfrmCadastroCliente
     end
   end
   inherited dtsLista: TDataSource
-    DataSet = qryLista
     Left = 644
     Top = 32
   end
   inherited qryLista: TADOQuery
-    DataSource = nil
+    CursorType = ctStatic
     SQL.Strings = (
-      'SELECT * FROM CLIENTES')
+      'SELECT * FROM vCliente')
     Left = 596
     Top = 160
-    object qryListaCLIENTE_ID: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'CLIENTE_ID'
+    object qryListaId_Cliente: TAutoIncField
+      FieldName = 'Id_Cliente'
       ReadOnly = True
     end
-    object qryListaNOME: TWideStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'NOME'
+    object qryListaNome: TStringField
+      FieldName = 'Nome'
       Size = 50
     end
-    object qryListaCEP: TWideStringField
-      FieldName = 'CEP'
-      Size = 10
-    end
-    object qryListaCIDADE: TWideStringField
-      DisplayLabel = 'Cidade'
-      FieldName = 'CIDADE'
+    object qryListaEndereco: TStringField
+      FieldName = 'Endereco'
       Size = 250
     end
-    object qryListaESTADO: TWideStringField
-      DisplayLabel = 'Estado'
-      FieldName = 'ESTADO'
-      Size = 2
-    end
-    object qryListaENDERECO: TWideStringField
-      DisplayLabel = 'Endere'#231'o'
-      FieldName = 'ENDERECO'
+    object qryListaCidade: TStringField
+      FieldName = 'Cidade'
       Size = 250
     end
-    object qryListaBAIRRO: TWideStringField
-      DisplayLabel = 'Bairro'
-      FieldName = 'BAIRRO'
+    object qryListaBairro: TStringField
+      FieldName = 'Bairro'
       Size = 100
     end
-    object qryListaTELEFONE: TWideStringField
-      DisplayLabel = 'Telefone'
-      FieldName = 'TELEFONE'
-      Size = 14
+    object qryListaEstado: TStringField
+      FieldName = 'Estado'
+      Size = 2
     end
-    object qryListaEMAIL: TWideStringField
-      DisplayLabel = 'Email'
-      FieldName = 'EMAIL'
+    object qryListaTelefone: TStringField
+      FieldName = 'Telefone'
+      Size = 10
+    end
+    object qryListaEmail: TStringField
+      FieldName = 'Email'
       Size = 250
     end
-    object qryListaDATA_NASCIMENTO: TDateTimeField
-      DisplayLabel = 'Data de Nascimento'
-      FieldName = 'DATA_NASCIMENTO'
+    object qryListaData_Nascimento: TDateTimeField
+      FieldName = 'Data_Nascimento'
+    end
+    object qryListaCep: TStringField
+      FieldName = 'Cep'
+      Size = 10
     end
   end
 end

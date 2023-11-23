@@ -14,6 +14,8 @@ type
     lblSenha: TLabel;
     btnFechar: TBitBtn;
     btnEntrar: TBitBtn;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
@@ -56,6 +58,16 @@ end;
 
 procedure TfrmLogin.RealizarLogin;
 begin
+  if (edtNome.Text = '') or (edtSenha.Text = '') then
+  begin
+    MessageDlg('Por favor, insira o nome de usuário e a senha.', mtWarning, [mbOK], 0);
+    if edtNome.Text = '' then
+      edtNome.SetFocus
+    else
+      edtSenha.SetFocus;
+    Exit;
+  end;
+
   var oUsuario := TCadastroUsuario.Create(dtmConexao.ConexaoDB);
   try
     if oUsuario.Logar(edtNome.Text, edtSenha.Text) then
@@ -65,14 +77,14 @@ begin
     end
     else
     begin
-        MessageDlg('Usuário Inválido', mtInformation, [mbok], 0);
-        edtNome.SetFocus;
+      MessageDlg('Usuário ou senha inválidos', mtInformation, [mbOK], 0);
+      edtNome.SetFocus;
     end;
   finally
     if Assigned(oUsuario) then
       FreeAndNil(oUsuario);
-
   end;
 end;
+
 
 end.

@@ -4,67 +4,96 @@ object frmLogin: TfrmLogin
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Login'
-  ClientHeight = 191
-  ClientWidth = 386
-  Color = clBtnFace
+  ClientHeight = 309
+  ClientWidth = 509
+  Color = 16776176
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object lblUsuario: TLabel
-    Left = 48
-    Top = 24
+    Left = 112
+    Top = 112
     Width = 80
     Height = 23
     Caption = 'Usu'#225'rio:'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clNavy
     Font.Height = -19
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
   end
   object lblSenha: TLabel
-    Left = 63
-    Top = 75
+    Left = 112
+    Top = 163
     Width = 65
     Height = 23
     Caption = 'Senha:'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clNavy
     Font.Height = -19
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label1: TLabel
+    Left = 208
+    Top = 40
+    Width = 108
+    Height = 23
+    Caption = 'TEx - Login'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 96
+    Top = 77
+    Width = 335
+    Height = 16
+    Caption = 'Juntos constru'#237'mos o futuro do Mercado Segurador'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object edtNome: TEdit
-    Left = 144
-    Top = 26
-    Width = 121
+    Left = 208
+    Top = 114
+    Width = 187
     Height = 21
     TabOrder = 0
   end
   object edtSenha: TEdit
-    Left = 144
-    Top = 80
-    Width = 121
+    Left = 208
+    Top = 168
+    Width = 187
     Height = 21
     PasswordChar = '*'
     TabOrder = 1
   end
   object btnFechar: TBitBtn
-    Left = 53
-    Top = 144
+    Left = 112
+    Top = 216
     Width = 75
     Height = 25
-    Caption = 'Fechar'
+    Caption = 'Sair'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -92,15 +121,21 @@ object frmLogin: TfrmLogin
       FF00FF0001890F1DBF3E5BF36B87FE728CFF5E7BFE395BFB1231EB010FB50001
       84FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF000189030AA306
       11B2050FB10107A0000188FF00FFFF00FFFF00FFFF00FFFF00FF}
+    ParentFont = False
     TabOrder = 2
     OnClick = btnFecharClick
   end
   object btnEntrar: TBitBtn
-    Left = 256
-    Top = 144
+    Left = 320
+    Top = 216
     Width = 75
     Height = 25
-    Caption = 'Entrar'
+    Caption = 'Logar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
       18000000000000030000120B0000120B00000000000000000000FF00FFFF00FF
@@ -128,6 +163,7 @@ object frmLogin: TfrmLogin
       FF00FF13992313992398E1B5BDEED4A7E7C490E0B178D99F49C7791B9D3D1B9D
       3DFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF1DA43513992313
       9923139923139923138C2AFF00FFFF00FFFF00FFFF00FFFF00FF}
+    ParentFont = False
     TabOrder = 3
     OnClick = btnEntrarClick
   end

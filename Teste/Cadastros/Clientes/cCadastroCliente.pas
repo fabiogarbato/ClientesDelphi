@@ -58,8 +58,8 @@ begin
     Result := True;
     qryExcluirCliente.Connection := FConexaoDB;
     qryExcluirCliente.SQL.Clear;
-    qryExcluirCliente.SQL.Add('DELETE CLIENTES WHERE CLIENTE_ID = :CLIENTE_ID');
-    qryExcluirCliente.Parameters.ParamByName('CLIENTE_ID').Value  := Id;
+    qryExcluirCliente.SQL.Add('DELETE Cliente WHERE Id_Cliente = :Id_Cliente');
+    qryExcluirCliente.Parameters.ParamByName('Id_Cliente').Value  := Id;
 
     try
       qryExcluirCliente.ExecSQL;
@@ -81,20 +81,20 @@ begin
     Result := True;
     qryAtualizarCliente.Connection := FConexaoDB;
     qryAtualizarCliente.SQL.Clear;
-    qryAtualizarCliente.SQL.Add('UPDATE CLIENTES SET NOME = :NOME, ENDERECO = :ENDERECO, CIDADE = :CIDADE,');
-    qryAtualizarCliente.SQL.Add('BAIRRO = :BAIRRO, ESTADO = :ESTADO, CEP = :CEP, TELEFONE = :TELEFONE, ');
-    qryAtualizarCliente.SQL.Add('EMAIL = :EMAIL, DATA_NASCIMENTO = :DATA_NASCIMENTO');
-    qryAtualizarCliente.SQL.Add('WHERE CLIENTE_ID = :CLIENTE_ID');
-    qryAtualizarCliente.Parameters.ParamByName('CLIENTE_ID').Value := FClienteId;
-    qryAtualizarCliente.Parameters.ParamByName('NOME').Value := FNome;
-    qryAtualizarCliente.Parameters.ParamByName('ENDERECO').Value := FEndereco;
-    qryAtualizarCliente.Parameters.ParamByName('CIDADE').Value := FCidade;
-    qryAtualizarCliente.Parameters.ParamByName('BAIRRO').Value := FBairro;
+    qryAtualizarCliente.SQL.Add('UPDATE Cliente SET Nome = :Nome, Endereco = :Endereco, Cidade = :Cidade,');
+    qryAtualizarCliente.SQL.Add('Bairro = :Bairro, Estado = :Estado, Cep = :Cep, Telefone = :Telefone, ');
+    qryAtualizarCliente.SQL.Add('Email = :Email, Data_Nascimento = :Data_Nascimento');
+    qryAtualizarCliente.SQL.Add('WHERE Id_Cliente = :Id_Cliente');
+    qryAtualizarCliente.Parameters.ParamByName('Id_Cliente').Value := FClienteId;
+    qryAtualizarCliente.Parameters.ParamByName('Nome').Value := FNome;
+    qryAtualizarCliente.Parameters.ParamByName('Endereco').Value := FEndereco;
+    qryAtualizarCliente.Parameters.ParamByName('Cidade').Value := FCidade;
+    qryAtualizarCliente.Parameters.ParamByName('Bairro').Value := FBairro;
     qryAtualizarCliente.Parameters.ParamByName('ESTADO').Value := FEstado;
-    qryAtualizarCliente.Parameters.ParamByName('CEP').Value := FCEP;
-    qryAtualizarCliente.Parameters.ParamByName('TELEFONE').Value := FTelefone;
-    qryAtualizarCliente.Parameters.ParamByName('EMAIL').Value := FEmail;
-    qryAtualizarCliente.Parameters.ParamByName('DATA_NASCIMENTO').Value := FDataNascimento;
+    qryAtualizarCliente.Parameters.ParamByName('Cep').Value := FCEP;
+    qryAtualizarCliente.Parameters.ParamByName('Telefone').Value := FTelefone;
+    qryAtualizarCliente.Parameters.ParamByName('Email').Value := FEmail;
+    qryAtualizarCliente.Parameters.ParamByName('Data_Nascimento').Value := FDataNascimento;
 
     try
       qryAtualizarCliente.ExecSQL;
@@ -116,17 +116,17 @@ begin
     Result := True;
     qryInserirCliente.Connection := FConexaoDB;
     qryInserirCliente.SQL.Clear;
-    qryInserirCliente.SQL.Add('INSERT INTO CLIENTES(NOME, ENDERECO, CIDADE, BAIRRO, ESTADO, CEP, TELEFONE, EMAIL, DATA_NASCIMENTO)');
-    qryInserirCliente.SQL.Add('VALUES(:NOME, :ENDERECO, :CIDADE, :BAIRRO, :ESTADO, :CEP, :TELEFONE, :EMAIL, :DATA_NASCIMENTO)');
-    qryInserirCliente.Parameters.ParamByName('NOME').Value := FNome;
-    qryInserirCliente.Parameters.ParamByName('ENDERECO').Value := FEndereco;
-    qryInserirCliente.Parameters.ParamByName('CIDADE').Value := FCidade;
-    qryInserirCliente.Parameters.ParamByName('BAIRRO').Value := FBairro;
-    qryInserirCliente.Parameters.ParamByName('ESTADO').Value := FEstado;
-    qryInserirCliente.Parameters.ParamByName('CEP').Value := FCEP;
-    qryInserirCliente.Parameters.ParamByName('TELEFONE').Value := FTelefone;
-    qryInserirCliente.Parameters.ParamByName('EMAIL').Value := FEmail;
-    qryInserirCliente.Parameters.ParamByName('DATA_NASCIMENTO').Value := FDataNascimento;
+    qryInserirCliente.SQL.Add('INSERT INTO Cliente(Nome, Endereco, Cidade, Bairro, Estado, Cep, Telefone, Email, Data_Nascimento)');
+    qryInserirCliente.SQL.Add('VALUES(:Nome, :Endereco, :Cidade, :Bairro, :Estado, :Cep, :Telefone, :Email, :Data_Nascimento)');
+    qryInserirCliente.Parameters.ParamByName('Nome').Value := FNome;
+    qryInserirCliente.Parameters.ParamByName('Endereco').Value := FEndereco;
+    qryInserirCliente.Parameters.ParamByName('Cidade').Value := FCidade;
+    qryInserirCliente.Parameters.ParamByName('Bairro').Value := FBairro;
+    qryInserirCliente.Parameters.ParamByName('Estado').Value := FEstado;
+    qryInserirCliente.Parameters.ParamByName('Cep').Value := FCEP;
+    qryInserirCliente.Parameters.ParamByName('Telefone').Value := FTelefone;
+    qryInserirCliente.Parameters.ParamByName('Email').Value := FEmail;
+    qryInserirCliente.Parameters.ParamByName('Data_Nascimento').Value := FDataNascimento;
 
     try
       qryInserirCliente.ExecSQL;
@@ -148,22 +148,22 @@ begin
     Result := True;
     tblCliente.Connection := FConexaoDB;
     tblCliente.SQL.Clear;
-    tblCliente.SQL.Add('SELECT * FROM CLIENTES WHERE CLIENTE_ID = :CLIENTE_ID');
-    tblCliente.Parameters.ParamByName('CLIENTE_ID').Value := Id;
+    tblCliente.SQL.Add('SELECT * FROM Cliente WHERE Id_Cliente = :Id_Cliente');
+    tblCliente.Parameters.ParamByName('Id_Cliente').Value := Id;
 
     try
       tblCliente.Open;
 
-      FClienteId := tblCliente.FieldByName('CLIENTE_ID').AsInteger;
-      FNome := tblCliente.FieldByName('NOME').AsString;
-      FEndereco := tblCliente.FieldByName('ENDERECO').AsString;
-      FCidade := tblCliente.FieldByName('CIDADE').AsString;
-      FBairro := tblCliente.FieldByName('BAIRRO').AsString;
-      FEstado := tblCliente.FieldByName('ESTADO').AsString;
-      FCEP := tblCliente.FieldByName('CEP').AsString;
-      FTelefone := tblCliente.FieldByName('TELEFONE').AsString;
-      FEmail := tblCliente.FieldByName('EMAIL').AsString;
-      FDataNascimento := tblCliente.FieldByName('DATA_NASCIMENTO').AsDateTime;
+      FClienteId := tblCliente.FieldByName('Id_Cliente').AsInteger;
+      FNome := tblCliente.FieldByName('Nome').AsString;
+      FEndereco := tblCliente.FieldByName('Endereco').AsString;
+      FCidade := tblCliente.FieldByName('Cidade').AsString;
+      FBairro := tblCliente.FieldByName('Bairro').AsString;
+      FEstado := tblCliente.FieldByName('Estado').AsString;
+      FCEP := tblCliente.FieldByName('Cep').AsString;
+      FTelefone := tblCliente.FieldByName('Telefone').AsString;
+      FEmail := tblCliente.FieldByName('Email').AsString;
+      FDataNascimento := tblCliente.FieldByName('Data_Nascimento').AsDateTime;
 
     except
       Result := False;
