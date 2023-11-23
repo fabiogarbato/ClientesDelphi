@@ -2,8 +2,8 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 319
-  ClientWidth = 852
+  ClientHeight = 633
+  ClientWidth = 1067
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,10 +18,9 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   object Label1: TLabel
     Left = 0
     Top = 0
-    Width = 852
-    Height = 319
-    Align = alClient
-    Alignment = taCenter
+    Width = 1067
+    Height = 633
+    Align = alTop
     Caption = 'SISTEMA DE CADASTROS'
     Color = clBackground
     Font.Charset = DEFAULT_CHARSET
@@ -35,12 +34,10 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     ExplicitHeight = 58
   end
   object btnClientes: TButton
-    AlignWithMargins = True
-    Left = 445
-    Top = 161
-    Width = 321
-    Height = 64
-    Align = alCustom
+    Left = 449
+    Top = 145
+    Width = 200
+    Height = 115
     Caption = 'Clientes'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -50,17 +47,13 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     ParentFont = False
     TabOrder = 0
     OnClick = btnClientesClick
-    ExplicitLeft = 442
-    ExplicitTop = 158
   end
   object btnUsuario: TButton
-    AlignWithMargins = True
-    Left = 445
-    Top = 231
-    Width = 321
-    Height = 65
-    Align = alCustom
-    Caption = 'Usuarios'
+    Left = 449
+    Top = 280
+    Width = 200
+    Height = 105
+    Caption = 'Usu'#225'rios'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -69,7 +62,5 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     ParentFont = False
     TabOrder = 1
     OnClick = btnUsuarioClick
-    ExplicitLeft = 442
-    ExplicitTop = 228
   end
 end

@@ -45,26 +45,44 @@ begin
 end;
 
 function TCadastroUsuario.Apagar(Id: Integer): Boolean;
+var
+  qryVerificarUsuario, qryExcluirUsuario: TADOQuery;
+  ContagemUsuarios: Integer;
 begin
-  var qryExcluirUsuario := TADOQuery.Create(nil);
+  Result := True;
+
+  qryVerificarUsuario := TADOQuery.Create(nil);
+  qryExcluirUsuario := TADOQuery.Create(nil);
 
   try
-    Result := True;
-    qryExcluirUsuario.Connection := FConexaoDB;
-    qryExcluirUsuario.SQL.Clear;
-//    qryExcluirUsuario.SQL.Add('DELETE Usuario WHERE Id_Usuario = :Id_Usuario');
-    qryExcluirUsuario.SQL.Add('EXEC UsuarioD :Id_Usuario');
-    qryExcluirUsuario.Parameters.ParamByName('Id_Usuario').Value := Id;
+    qryVerificarUsuario.Connection := FConexaoDB;
+    qryVerificarUsuario.SQL.Clear;
+    qryVerificarUsuario.SQL.Add('SELECT COUNT(*) AS Contagem FROM Usuario');
+    qryVerificarUsuario.Open;
 
-    try
-      qryExcluirUsuario.ExecSQL;
-    except
+    ContagemUsuarios := qryVerificarUsuario.FieldByName('Contagem').AsInteger;
+
+    if ContagemUsuarios > 1 then
+    begin
+      qryExcluirUsuario.Connection := FConexaoDB;
+      qryExcluirUsuario.SQL.Clear;
+      qryExcluirUsuario.SQL.Add('EXEC UsuarioD :Id_Usuario');
+      qryExcluirUsuario.Parameters.ParamByName('Id_Usuario').Value := Id;
+
+      try
+        qryExcluirUsuario.ExecSQL;
+      except
+        Result := False;
+      end;
+    end
+    else
+    begin
+      MessageDlg('Não é permitido excluir todos os usuários do sistema!', mtWarning, [mbOK], 0);
       Result := False;
     end;
-
   finally
-    if Assigned(qryExcluirUsuario) then
-      FreeAndNil(qryExcluirUsuario);
+    FreeAndNil(qryVerificarUsuario);
+    FreeAndNil(qryExcluirUsuario);
   end;
 end;
 
@@ -76,8 +94,7 @@ begin
     Result := True;
     qryAtualizarUsuario.Connection := FConexaoDB;
     qryAtualizarUsuario.SQL.Clear;
-    qryAtualizarUsuario.SQL.Add('UPDATE Usuario SET Usuario = :Usuario, Senha = :Senha');
-    qryAtualizarUsuario.SQL.Add('WHERE Id_Usuario = :Id_Usuario');
+    qryAtualizarUsuario.SQL.Add('EXEC dbo.UsuarioU :Id_Usuario, :Usuario, :Senha');
     qryAtualizarUsuario.Parameters.ParamByName('Id_Usuario').Value := FUsuarioId;
     qryAtualizarUsuario.Parameters.ParamByName('Usuario').Value := FNome;
     qryAtualizarUsuario.Parameters.ParamByName('Senha').Value := FSenha;
@@ -102,8 +119,7 @@ begin
     Result := True;
     qryInserirUsuario.Connection := FConexaoDB;
     qryInserirUsuario.SQL.Clear;
-    qryInserirUsuario.SQL.Add('INSERT INTO Usuario(Usuario, Senha)');
-    qryInserirUsuario.SQL.Add('VALUES(:Usuario, :Senha)');
+    qryInserirUsuario.SQL.Add('EXEC UsuarioI :Usuario, :Senha');
     qryInserirUsuario.Parameters.ParamByName('Usuario').Value := FNome;
     qryInserirUsuario.Parameters.ParamByName('Senha').Value := FSenha;
 
