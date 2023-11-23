@@ -5,13 +5,14 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, uDtmConexao, ADODB, IniFiles,
-  Vcl.StdCtrls;
+  Vcl.StdCtrls, Vcl.Buttons;
 
 type
   TfrmMenuPrincipal = class(TForm)
     Label1: TLabel;
     btnClientes: TButton;
     btnUsuario: TButton;
+    btnFechar: TBitBtn;
     procedure menuFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -20,6 +21,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnClientesClick(Sender: TObject);
     procedure btnUsuarioClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
   private
     procedure CriarConexaoComBanco;
     { Private declarations }
@@ -42,6 +44,11 @@ begin
   frmCadastroClientes := TfrmCadastroCliente.Create(self);
   frmCadastroClientes.ShowModal;
   frmCadastroClientes.Release;
+end;
+
+procedure TfrmMenuPrincipal.btnFecharClick(Sender: TObject);
+begin
+  Application.Terminate;
 end;
 
 procedure TfrmMenuPrincipal.btnUsuarioClick(Sender: TObject);
