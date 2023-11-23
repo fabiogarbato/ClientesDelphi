@@ -120,7 +120,14 @@ end;
 
 function TfrmCadastroCliente.Apagar: Boolean;
 begin
-  if MessageDlg('Deseja mesmo apagar o registro atual?', mtConfirmation, [mbYes, mbNo],0) = mrNo then
+  if qryLista.IsEmpty or (qryLista.FieldByName('Id_Cliente').IsNull) then
+  begin
+    ShowMessage('Nenhum cliente selecionado para apagar.');
+    Result := False;
+    Exit;
+  end;
+
+  if MessageDlg('Deseja mesmo apagar o registro atual?', mtConfirmation, [mbYes, mbNo], 0) = mrNo then
     Abort;
 
   Result := oCliente.Apagar(qryLista.FieldByName('Id_Cliente').AsInteger);

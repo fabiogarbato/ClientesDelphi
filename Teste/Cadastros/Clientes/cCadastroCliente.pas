@@ -58,7 +58,7 @@ begin
     Result := True;
     qryExcluirCliente.Connection := FConexaoDB;
     qryExcluirCliente.SQL.Clear;
-    qryExcluirCliente.SQL.Add('DELETE Cliente WHERE Id_Cliente = :Id_Cliente');
+    qryExcluirCliente.SQL.Add('EXEC dbo.ClienteD :Id_Cliente');
     qryExcluirCliente.Parameters.ParamByName('Id_Cliente').Value  := Id;
 
     try
