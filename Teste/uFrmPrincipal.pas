@@ -9,20 +9,17 @@ uses
 
 type
   TfrmMenuPrincipal = class(TForm)
-    mainMenuPrincipal: TMainMenu;
-    menuCadatros: TMenuItem;
-    menuClientes: TMenuItem;
-    menuUsuario: TMenuItem;
-    menuFechar: TMenuItem;
-    N1: TMenuItem;
-    N2: TMenuItem;
     Label1: TLabel;
+    btnClientes: TButton;
+    btnUsuario: TButton;
     procedure menuFecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure menuClientesClick(Sender: TObject);
     procedure menuUsuarioClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnClientesClick(Sender: TObject);
+    procedure btnUsuarioClick(Sender: TObject);
   private
     procedure CriarConexaoComBanco;
     { Private declarations }
@@ -39,6 +36,20 @@ implementation
 
 uses
   uCadastroCliente, uCadastroUsuarios, uLogin;
+
+procedure TfrmMenuPrincipal.btnClientesClick(Sender: TObject);
+begin
+  frmCadastroClientes := TfrmCadastroCliente.Create(self);
+  frmCadastroClientes.ShowModal;
+  frmCadastroClientes.Release;
+end;
+
+procedure TfrmMenuPrincipal.btnUsuarioClick(Sender: TObject);
+begin
+  frmCadastroUsuarios := TfrmCadastroUsuarios.Create(self);
+  frmCadastroUsuarios.ShowModal;
+  frmCadastroUsuarios.Release;
+end;
 
 procedure TfrmMenuPrincipal.CriarConexaoComBanco;
   var

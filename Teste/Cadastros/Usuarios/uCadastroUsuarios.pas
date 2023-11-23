@@ -13,9 +13,9 @@ type
     edtCodigo: TLabeledEdit;
     edtNome: TLabeledEdit;
     edtSenha: TLabeledEdit;
-    qryListaUSUARIO_ID: TIntegerField;
-    qryListaNOME: TWideStringField;
-    qryListaSENHA: TWideStringField;
+    qryListaUsuario: TStringField;
+    qryListaSenha: TStringField;
+    qryListaId_Usuario: TAutoIncField;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnAlterarClick(Sender: TObject);
@@ -59,7 +59,7 @@ begin
   if MessageDlg('Deseja mesmo apagar o registro atual?', mtConfirmation, [mbYes, mbNo],0) = mrNo then
     Abort;
 
-  Result := oUsuario.Apagar(qryLista.FieldByName('USUARIO_ID').AsInteger);
+  Result := oUsuario.Apagar(qryLista.FieldByName('Id_Usuario').AsInteger);
 end;
 
 function TfrmCadastroUsuarios.Salvar(estadoCadastro: TEstadoCadastro): Boolean;
@@ -82,7 +82,7 @@ end;
 
 procedure TfrmCadastroUsuarios.btnAlterarClick(Sender: TObject);
 begin
-  if oUsuario.Selecionar(qryLista.FieldByName('USUARIO_ID').AsInteger) then
+  if oUsuario.Selecionar(qryLista.FieldByName('Id_Usuario').AsInteger) then
   begin
     edtCodigo.Text := oUsuario.UsuarioId.ToString;
     edtNome.Text := oUsuario.Nome;

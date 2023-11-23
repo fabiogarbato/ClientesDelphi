@@ -14,8 +14,8 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
       Hints.Strings = ()
     end
     inherited brnFechar: TBitBtn
-      Left = 722
-      ExplicitLeft = 718
+      Left = 714
+      ExplicitLeft = 710
     end
   end
   inherited pgcPrincipal: TPageControl
@@ -36,12 +36,12 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
         Columns = <
           item
             Expanded = False
-            FieldName = 'USUARIO_ID'
+            FieldName = 'Usuario'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'NOME'
+            FieldName = 'Id_Usuario'
             Visible = True
           end>
       end
@@ -92,32 +92,26 @@ inherited frmCadastroUsuarios: TfrmCadastroUsuarios
     end
   end
   inherited dtsLista: TDataSource
-    DataSet = qryLista
     Left = 492
     Top = 48
   end
   inherited qryLista: TADOQuery
-    DataSource = nil
+    CursorType = ctStatic
     SQL.Strings = (
-      'SELECT * FROM USUARIOS')
+      'SELECT * FROM vUsuario')
     Left = 436
     Top = 48
-    object qryListaUSUARIO_ID: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'USUARIO_ID'
+    object qryListaUsuario: TStringField
+      FieldName = 'Usuario'
+      Size = 50
+    end
+    object qryListaSenha: TStringField
+      FieldName = 'Senha'
+      Size = 50
+    end
+    object qryListaId_Usuario: TAutoIncField
+      FieldName = 'Id_Usuario'
       ReadOnly = True
-    end
-    object qryListaNOME: TWideStringField
-      DisplayLabel = 'Nome'
-      FieldName = 'NOME'
-      Required = True
-      Size = 50
-    end
-    object qryListaSENHA: TWideStringField
-      DisplayLabel = 'Senha'
-      FieldName = 'SENHA'
-      Required = True
-      Size = 50
     end
   end
 end

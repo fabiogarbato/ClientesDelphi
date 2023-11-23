@@ -52,8 +52,9 @@ begin
     Result := True;
     qryExcluirUsuario.Connection := FConexaoDB;
     qryExcluirUsuario.SQL.Clear;
-    qryExcluirUsuario.SQL.Add('DELETE USUARIOS WHERE USUARIO_ID = :USUARIO_ID');
-    qryExcluirUsuario.Parameters.ParamByName('USUARIO_ID').Value := Id;
+//    qryExcluirUsuario.SQL.Add('DELETE Usuario WHERE Id_Usuario = :Id_Usuario');
+    qryExcluirUsuario.SQL.Add('EXEC UsuarioD :Id_Usuario');
+    qryExcluirUsuario.Parameters.ParamByName('Id_Usuario').Value := Id;
 
     try
       qryExcluirUsuario.ExecSQL;
@@ -75,11 +76,11 @@ begin
     Result := True;
     qryAtualizarUsuario.Connection := FConexaoDB;
     qryAtualizarUsuario.SQL.Clear;
-    qryAtualizarUsuario.SQL.Add('UPDATE USUARIOS SET NOME = :NOME, SENHA = :SENHA');
-    qryAtualizarUsuario.SQL.Add('WHERE USUARIO_ID = :USUARIO_ID');
-    qryAtualizarUsuario.Parameters.ParamByName('USUARIO_ID').Value := FUsuarioId;
-    qryAtualizarUsuario.Parameters.ParamByName('NOME').Value := FNome;
-    qryAtualizarUsuario.Parameters.ParamByName('SENHA').Value := FSenha;
+    qryAtualizarUsuario.SQL.Add('UPDATE Usuario SET Usuario = :Usuario, Senha = :Senha');
+    qryAtualizarUsuario.SQL.Add('WHERE Id_Usuario = :Id_Usuario');
+    qryAtualizarUsuario.Parameters.ParamByName('Id_Usuario').Value := FUsuarioId;
+    qryAtualizarUsuario.Parameters.ParamByName('Usuario').Value := FNome;
+    qryAtualizarUsuario.Parameters.ParamByName('Senha').Value := FSenha;
 
     try
       qryAtualizarUsuario.ExecSQL;
@@ -101,10 +102,10 @@ begin
     Result := True;
     qryInserirUsuario.Connection := FConexaoDB;
     qryInserirUsuario.SQL.Clear;
-    qryInserirUsuario.SQL.Add('INSERT INTO USUARIOS(NOME, SENHA)');
-    qryInserirUsuario.SQL.Add('VALUES(:NOME, :SENHA)');
-    qryInserirUsuario.Parameters.ParamByName('NOME').Value := FNome;
-    qryInserirUsuario.Parameters.ParamByName('SENHA').Value := FSenha;
+    qryInserirUsuario.SQL.Add('INSERT INTO Usuario(Usuario, Senha)');
+    qryInserirUsuario.SQL.Add('VALUES(:Usuario, :Senha)');
+    qryInserirUsuario.Parameters.ParamByName('Usuario').Value := FNome;
+    qryInserirUsuario.Parameters.ParamByName('Senha').Value := FSenha;
 
     try
       qryInserirUsuario.ExecSQL;
@@ -126,9 +127,9 @@ begin
     Result := True;
     tblUsuarios.Connection := FConexaoDB;
     tblUsuarios.SQL.Clear;
-    tblUsuarios.SQL.Add('SELECT COUNT(USUARIO_ID) AS QTDE_USUARIO FROM USUARIOS WHERE NOME = :NOME AND SENHA = :SENHA');
-    tblUsuarios.Parameters.ParamByName('NOME').Value := usuario;
-    tblUsuarios.Parameters.ParamByName('SENHA').Value := senha;
+    tblUsuarios.SQL.Add('SELECT COUNT(Id_Usuario) AS QTDE_USUARIO FROM Usuario WHERE Usuario = :Usuario AND Senha = :Senha');
+    tblUsuarios.Parameters.ParamByName('Usuario').Value := usuario;
+    tblUsuarios.Parameters.ParamByName('Senha').Value := senha;
 
     try
       tblUsuarios.Open;
@@ -156,15 +157,15 @@ begin
     Result := True;
     tblUsuarios.Connection := FConexaoDB;
     tblUsuarios.SQL.Clear;
-    tblUsuarios.SQL.Add('SELECT * FROM USUARIOS WHERE USUARIO_ID = :USUARIO_ID');
-    tblUsuarios.Parameters.ParamByName('USUARIO_ID').Value := Id;
+    tblUsuarios.SQL.Add('SELECT * FROM Usuario WHERE Id_Usuario = :Id_Usuario');
+    tblUsuarios.Parameters.ParamByName('Id_Usuario').Value := Id;
 
     try
       tblUsuarios.Open;
 
-      FUsuarioId := tblUsuarios.FieldByName('USUARIO_ID').AsInteger;
-      FNome := tblUsuarios.FieldByName('NOME').AsString;
-      FSenha := tblUsuarios.FieldByName('SENHA').AsString;
+      FUsuarioId := tblUsuarios.FieldByName('Id_Usuario').AsInteger;
+      FNome := tblUsuarios.FieldByName('Usuario').AsString;
+      FSenha := tblUsuarios.FieldByName('Senha').AsString;
 
     except
       Result := False;

@@ -2,7 +2,7 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   Left = 0
   Top = 0
   Caption = 'Menu Principal'
-  ClientHeight = 299
+  ClientHeight = 319
   ClientWidth = 852
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -10,7 +10,6 @@ object frmMenuPrincipal: TfrmMenuPrincipal
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  Menu = mainMenuPrincipal
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
@@ -20,7 +19,7 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     Left = 0
     Top = 0
     Width = 852
-    Height = 299
+    Height = 319
     Align = alClient
     Alignment = taCenter
     Caption = 'SISTEMA DE CADASTROS'
@@ -35,29 +34,42 @@ object frmMenuPrincipal: TfrmMenuPrincipal
     ExplicitWidth = 607
     ExplicitHeight = 58
   end
-  object mainMenuPrincipal: TMainMenu
-    Left = 768
-    Top = 48
-    object menuCadatros: TMenuItem
-      Caption = 'Cadastros'
-      object menuClientes: TMenuItem
-        Caption = 'Clientes'
-        OnClick = menuClientesClick
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object menuUsuario: TMenuItem
-        Caption = 'Usu'#225'rios'
-        OnClick = menuUsuarioClick
-      end
-      object N2: TMenuItem
-        Caption = '-'
-      end
-      object menuFechar: TMenuItem
-        Caption = 'Fechar'
-        OnClick = menuFecharClick
-      end
-    end
+  object btnClientes: TButton
+    AlignWithMargins = True
+    Left = 445
+    Top = 161
+    Width = 321
+    Height = 64
+    Align = alCustom
+    Caption = 'Clientes'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    OnClick = btnClientesClick
+    ExplicitLeft = 442
+    ExplicitTop = 158
+  end
+  object btnUsuario: TButton
+    AlignWithMargins = True
+    Left = 445
+    Top = 231
+    Width = 321
+    Height = 65
+    Align = alCustom
+    Caption = 'Usuarios'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    OnClick = btnUsuarioClick
+    ExplicitLeft = 442
+    ExplicitTop = 228
   end
 end

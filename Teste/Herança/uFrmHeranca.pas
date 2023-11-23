@@ -117,7 +117,8 @@ begin
       ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavegator, pgcPrincipal, true);
       ControlarIndiceTab(pgcPrincipal, 0);
       LimparCampos;
-      qryLista.Refresh;
+      qryLista.Close;
+      qryLista.Open;
     end
   finally
     FEstadoCadastro := ecNenhum;
@@ -143,7 +144,8 @@ begin
       ControlarBotoes(btnNovo, btnAlterar, btnCancelar, btnGravar, btnApagar, btnNavegator, pgcPrincipal, true);
       ControlarIndiceTab(pgcPrincipal, 0);
       LimparCampos;
-      qryLista.Refresh;
+      qryLista.Close;
+      qryLista.Open;
     end;
   finally
     FEstadoCadastro := ecNenhum;
